@@ -32,7 +32,7 @@ button1.addEventListener('click', function () {
     return;
   }
   let ArrayA = [""];
-  let ArrayWords = InputText1.value.match(/[а-яёa-z'-]+/giu);
+  let ArrayWords = InputText1.value.match(/[а-яёa-z0-9'-]+/giu);
   for(let i in ArrayWords)
     ArrayWords[i]=ArrayWords[i].toLowerCase();
   let text0 = "Количество слов в тексте: " + ArrayWords.length+'\n';
