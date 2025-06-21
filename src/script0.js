@@ -31,23 +31,23 @@ button1.addEventListener('click', function () {
     alert("Текстовое поле пустое! Введите текст!");
     return;
   }
-  let AnswArray = [""];
+  let ArrayA = [""];
   let ArrayWords = InputText1.value.match(/[а-яёa-z'-]+/giu);
   for(let i in ArrayWords)
     ArrayWords[i]=ArrayWords[i].toLowerCase();
   let text0 = "Количество слов в тексте: " + ArrayWords.length+'\n';
-  AnswArray.push(text0);
+  ArrayA.push(text0);
   let countRepeatedWords = {};
   ArrayWords.forEach(elem => {
     if (countRepeatedWords[elem])
       countRepeatedWords[elem]++;
     else countRepeatedWords[elem] = 1;
   });
-  AnswArray.push("Используемые слова и их количество:\n");
+  ArrayA.push("Используемые слова и их количество:\n");
   const sortedWords = Object.entries(countRepeatedWords).sort(
     (a, b) => b[1] - a[1]);
-  sortedWords.forEach(([word, count]) => AnswArray.push(word + ': ' + count + '\n'));
-  AnswArray.forEach(elem => {
+  sortedWords.forEach(([word, count]) => ArrayA.push(word + ': ' + count + '\n'));
+  ArrayA.forEach(elem => {
     OutputText.value += elem;
   });
 });
