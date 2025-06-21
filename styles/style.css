@@ -7,11 +7,12 @@ html{
 header{
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-kerning: normal;
-  font-size: large;
+  font-kerning: auto;
+  font-synthesis-style: initial;
+  font-size: medium;
   font-variant: normal;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 hr{
@@ -56,6 +57,8 @@ hr{
   background-color: rgba(249, 245, 234, 1);
   padding: 10px;
   margin-bottom: 50px;
+  font-size: 18px;
+  color: black;
 }
 
 #input0:active{

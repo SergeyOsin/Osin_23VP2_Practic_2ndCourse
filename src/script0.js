@@ -12,15 +12,17 @@ window.onload=function(){
     InputText1.value = localStorage.getItem('value');
 }
 
-InputText1.addEventListener('input',SaveTextonUpdate);
-
 const ClearTextArea = () => {
   if (InputText1.value === "") {
     alert("Текстовое поле уже пустое!");
     return;
   }
   InputText1.value = OutputText.value = "";
+  localStorage.setItem('value',InputText1.value);
 }
+
+InputText1.addEventListener('input',SaveTextonUpdate);
+
 button2.onclick = ClearTextArea;
 
 button1.addEventListener('click', function () {
@@ -29,7 +31,7 @@ button1.addEventListener('click', function () {
     alert("Текстовое поле пустое! Введите текст!");
     return;
   }
-  let AnswArray = [];
+  let AnswArray = [""];
   let ArrayWords = InputText1.value.match(/[а-яёa-z'-]+/giu);
   for(let i in ArrayWords)
     ArrayWords[i]=ArrayWords[i].toLowerCase();
