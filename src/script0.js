@@ -3,10 +3,20 @@ const OutputText = document.querySelector('#output0');
 const button1 = document.querySelector('.create');
 const button2 = document.querySelector('.clear');
 
+function SaveTextonUpdate(){
+  localStorage.setItem('value',InputText1.value);
+}
+
+window.onload=function(){
+  if (localStorage.getItem('value'))
+    InputText1.value = localStorage.getItem('value');
+}
+
+InputText1.addEventListener('input',SaveTextonUpdate);
 
 const ClearTextArea = () => {
   if (InputText1.value === "") {
-    confirm("Текстовое поле уже пустое!");
+    alert("Текстовое поле уже пустое!");
     return;
   }
   InputText1.value = OutputText.value = "";
@@ -14,15 +24,16 @@ const ClearTextArea = () => {
 button2.onclick = ClearTextArea;
 
 button1.addEventListener('click', function () {
-  let CopyInputText1 = InputText1.value;
   OutputText.value = " ";
   if (InputText1.value === "") {
-    confirm("Текстовое поле пустое! Введите текст!");
+    alert("Текстовое поле пустое! Введите текст!");
     return;
   }
   let AnswArray = [];
-  let ArrayWords = InputText1.value.match(/\w+/g);
-  let text0 = "Количество слов в тексте: " + ArrayWords.length + '\n';
+  let ArrayWords = InputText1.value.match(/[а-яёa-z'-]+/giu);
+  for(let i in ArrayWords)
+    ArrayWords[i]=ArrayWords[i].toLowerCase();
+  let text0 = "Количество слов в тексте: " + ArrayWords.length+'\n';
   AnswArray.push(text0);
   let countRepeatedWords = {};
   ArrayWords.forEach(elem => {
